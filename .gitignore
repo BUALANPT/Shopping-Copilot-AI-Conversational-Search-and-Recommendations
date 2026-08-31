@@ -1,0 +1,51 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+results.json
+data/catalog.jsonl
+data/releases/
+# Organizer-only code, private evaluation data, manifests, and build reports.
+organizer/
+secure/
+# Internal provenance and release-audit working documents.
+docs/audits/
+docs/data_selection_audit.md
+docs/participant_release_checklist.md
+# Organizer-only pipeline tests.
+tests/test_5core_builder.py
+tests/test_organizer_pipeline.py
+*.log
+
+# Official release assets downloaded locally.
+/catalog.jsonl.gz
+/SHA256SUMS
+
+# Reproducible generated experiment artifacts.
+/baseline_results.json
+/data/splits/*.jsonl
+/data/splits/manifest.json
+/experiments/runs/*
+!/experiments/runs/.gitkeep
+/experiments/registry.jsonl
+
+# Step 5 neural retrieval artifacts (rebuild with scripts/build_embeddings.py).
+/artifacts/product_embeddings.npy
+/artifacts/product_embeddings.meta.json
+/artifacts/bge_product_embeddings.npy
+/artifacts/bge_product_embeddings.meta.json
+/artifacts/*.building
+/artifacts/*.progress.json
+/artifacts/fastembed_cache/
+/artifacts/flashrank_cache/
+/artifacts/pip_cache/
+/artifacts/tmp/
+
+# Python/editor caches.
+.pytest_cache/
+.venv/
+.vscode/
+/.docx_qa/
+
+# Unintegrated local design-source drop; the final frontend lives in demo/_assets/.
+/demo_assets/
