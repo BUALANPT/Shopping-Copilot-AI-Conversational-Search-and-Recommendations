@@ -107,18 +107,18 @@ def _failure_reason(turns: list[dict]) -> str:
 def _failure_suggestion(reason: str) -> str:
     return {
         "not_recalled": (
-            "优先改进通用查询表达、类目/元数据覆盖和 Dense 候选补充；禁止针对 sample_id 或目标 ASIN 写规则。"
+            "Prioritize improving general query expressions, category/metadata coverage, and Dense candidate supplementation; prohibit rules targeting sample_id or target ASIN."
         ),
         "fusion_drop": (
-            "审查路由权重、候选截断和 Dense-only 准入，确认已召回目标没有在融合阶段被零权重或上限丢弃。"
+            "Review routing weights, candidate truncation, and Dense-only admission criteria to confirm the target was not dropped with zero weight or a cap during the fusion stage."
         ),
         "constraint_filter_drop": (
-            "逐项核对 applied/relaxed constraints 与 catalog 原字段，避免低覆盖字段被误当作可靠硬约束。"
+            "Cross-check applied/relaxed constraints against catalog original fields to avoid misinterpreting low-coverage fields as reliable hard constraints."
         ),
         "final_rank_over_10": (
-            "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。"
+            "Target has entered the final candidate list; prioritize reviewing general reranker features, semantic ranking, and neighbor competition items without expanding the candidate pool without evidence."
         ),
-        "unclassified": "复核重放一致性与阶段列表长度；该类型不应用于调权结论。",
+        "unclassified": "Replay consistency and stage list length verification required; this type should not be used for weight adjustment conclusions.",
     }[reason]
 
 
@@ -311,16 +311,16 @@ def _cell(value: object, limit: int = 96) -> str:
 def _markdown(report: dict) -> str:
     metrics = report["source_metrics"]
     lines = [
-        "# 步骤 12：冻结 dev 失败会话审核报告",
+        "# Step 12: Frozen Dev Failed Session Audit Report",
         "",
-        "## 1. 数据边界与结论",
+        "## 1. Data Boundary and Conclusions",
         "",
-        f"- 数据角色：`{report['dataset_role']}`；样本数：{report['source_sample_count']}。",
-        f"- Dataset SHA256：`{report['dataset_sha256']}`。",
-        f"- Catalog SHA256：`{report['catalog_sha256']}`；catalog 仅被读取。",
-        f"- 失败会话：{report['failure_count']}；Intent Override miss：{report['override_failure_count']}。",
-        "- 本报告只复盘既有结果，不修改权重，不读取 holdout/public/final，不生成或注入 ASIN。",
-        f"- 合规复核：最多 {report['compliance_audit']['max_turn_observed']} 轮；共审查 {report['compliance_audit']['recommendation_count']} 个推荐位置；未知 ID、重复 ID、重放漂移均为 0。",
+        f"- Data Role: `{report['dataset_role']}`; Sample Count: {report['source_sample_count']}.",
+        f"- Dataset SHA256: `{report['dataset_sha256']}`.",
+        f"- Catalog SHA256: `{report['catalog_sha256']}`; Catalog is read-only.",
+        f"- Failed Sessions: {report['failure_count']}; Intent Override Miss: {report['override_failure_count']}.",
+        "- This report reviews existing results only, does not modify weights, does not access holdout/public/final datasets, and does not generate or inject ASINs.",
+        f"- Compliance Audit: Max {report['compliance_audit']['max_turn_observed']} turns observed; Total {report['compliance_audit']['recommendation_count']} recommendation positions reviewed; Unknown IDs, Duplicate IDs, and Replay Drift are all 0.",
         "",
         "| HR@10 | MRR | MTTC ↓ | Efficiency | TechnicalScore |",
         "|---:|---:|---:|---:|---:|",
@@ -330,16 +330,16 @@ def _markdown(report: dict) -> str:
             f"{metrics['recommended_technical_score']:.6f} |"
         ),
         "",
-        "## 2. 场景分层",
+        "## 2. Scenario Stratification",
         "",
-        "| 场景 | 样本 | 命中 | 失败 | 失败率 | 已复盘 | 说明 |",
+        "| Scenario | Samples | Hits | Failures | Failure Rate | Reviewed | Notes |",
         "|---|---:|---:|---:|---:|---:|---|",
     ]
     for scenario, item in report["scenario_summary"].items():
         note = (
-            "已覆盖全部可用失败"
+            "All available failures covered"
             if item["reviewed_all_available_failures"]
-            else f"按优先级选取 Top {item['review_limit']}"
+            else f"Top {item['review_limit']} selected by priority"
         )
         lines.append(
             f"| {scenario} | {item['sample_count']} | {item['hit_count']} | "
@@ -349,11 +349,11 @@ def _markdown(report: dict) -> str:
     lines.extend(
         [
             "",
-            "> dev 150 中 Boundary 总样本仅 8 条；任何场景不足 20 个 miss 时复盘全部可用失败，绝不从 holdout/public 补数或伪造案例。",
+            "> Of the 150 dev samples, only 8 are in the Boundary scenario; when any scenario has fewer than 20 misses, all available failures are reviewed. No data is supplemented from holdout/public or cases are fabricated.",
             "",
-            "## 3. 根因分布",
+            "## 3. Root Cause Distribution",
             "",
-            "| 根因 | 数量 | 通用处理方向 |",
+            "| Root Cause | Count | General Handling Direction |",
             "|---|---:|---|",
         ]
     )
@@ -365,18 +365,18 @@ def _markdown(report: dict) -> str:
     lines.extend(
         [
             "",
-            "## 4. 跨案例审核结论",
+            "## 4. Cross-Case Audit Conclusions",
             "",
-            f"- {report['failure_count']} 个 miss 中，BM25 召回 {recalled['bm25']} 个、Metadata 召回 {recalled['metadata']} 个、Dense 召回 {recalled['dense']} 个、融合后保留 {recalled['fused']} 个、最终列表可见 {recalled['final']} 个。",
-            f"- 最佳最终排名分布：缺失 {buckets['missing']} 个，11-20 名 {buckets['11-20']} 个，21-50 名 {buckets['21-50']} 个，51 名以后 {buckets['51+']} 个。",
-            f"- 失败会话共提出 {aggregate['total_questions']} 次问题，平均 {aggregate['mean_questions_per_failed_session']:.2f} 次；重复提问会话 {aggregate['duplicate_question_sessions']} 个。",
-            f"- Over-General 截断涉及 {aggregate['retrieval_cutoff_sessions']} 个失败会话；Semantic Ranker 生效轮次 {aggregate['semantic_ranker_applied_turns']}，符合默认 LLM 关闭基线。",
-            f"- 硬约束实际生效于 {aggregate['constraint_applied_sessions']} 个失败会话，发生安全放宽的会话 {aggregate['constraint_relaxed_sessions']} 个。",
-            "- 优先级：先解决 2 个全路由未召回，再处理 2 个最终第 11-20 名的通用重排近失；其余样本只用于验证跨案例规律，禁止单样本硬编码。",
+            f"- Of {report['failure_count']} misses, BM25 retrieved {recalled['bm25']}, Metadata retrieved {recalled['metadata']}, Dense retrieved {recalled['dense']}, retained after fusion {recalled['fused']}, and visible in the final list {recalled['final']}.",
+            f"- Best Final Rank Distribution: Missing {buckets['missing']}, Ranks 11-20: {buckets['11-20']}, Ranks 21-50: {buckets['21-50']}, Ranks 51+: {buckets['51+']}.",
+            f"- Failed sessions raised {aggregate['total_questions']} questions in total, averaging {aggregate['mean_questions_per_failed_session']:.2f} per session; Sessions with duplicate questions: {aggregate['duplicate_question_sessions']}.",
+            f"- Over-General truncation involved {aggregate['retrieval_cutoff_sessions']} failed sessions; Semantic Ranker applied in {aggregate['semantic_ranker_applied_turns']} turns, consistent with the default LLM-off baseline.",
+            f"- Hard constraints were effectively applied in {aggregate['constraint_applied_sessions']} failed sessions, and safety relaxations occurred in {aggregate['constraint_relaxed_sessions']} sessions.",
+            "- Priority: First resolve 2 cases where no route recalled the target, then address 2 cases with final ranks 11-20 due to general reranking near-misses; remaining samples are for validating cross-case patterns only. No single-sample hard-coding is permitted.",
             "",
-            "## 5. 全部失败摘要",
+            "## 5. Full Failure Summary",
             "",
-            "| sample_id | scenario | 根因 | BM25 | Dense | 稀疏 RRF | 融合 | 最终 | 首次最终出现轮次 |",
+            "| sample_id | scenario | Root Cause | BM25 | Dense | Sparse RRF | Fused | Final | First Final Turn |",
             "|---|---|---|---:|---:|---:|---:|---:|---:|",
         ]
     )
@@ -396,7 +396,7 @@ def _markdown(report: dict) -> str:
         for sample_id in item["selected_sample_ids"]
     }
     by_id = {item["sample_id"]: item for item in report["sessions"]}
-    lines.extend(["", "## 6. 分场景逐轮复盘", ""])
+    lines.extend(["", "## 6. Scenario-by-Scenario Turn-by-Turn Review", ""])
     for scenario in SCENARIO_ORDER:
         scenario_data = report["scenario_summary"].get(scenario, {})
         ids = [
@@ -404,9 +404,9 @@ def _markdown(report: dict) -> str:
             for sample_id in scenario_data.get("selected_sample_ids", [])
             if sample_id in selected_ids
         ]
-        lines.extend([f"### {scenario}：{len(ids)} 个可用失败案例", ""])
+        lines.extend([f"### {scenario}: {len(ids)} Available Failure Cases", ""])
         if not ids:
-            lines.extend(["该场景在当前冻结 dev 结果中没有失败会话。", ""])
+            lines.extend(["No failed sessions found for this scenario in the current frozen dev results.", ""])
             continue
         for sample_id in ids:
             session = by_id[sample_id]
@@ -416,19 +416,19 @@ def _markdown(report: dict) -> str:
                 [
                     f"#### {sample_id} · `{session['failure_reason']}`",
                     "",
-                    f"- 目标：`{session['target']}` · {_cell(target['title'], 180)}",
-                    f"- 类目：{_cell(target['category'], 180)}",
-                    f"- 提问序列：{', '.join(questions['asked_attributes']) or '无'}；重复提问：{', '.join(questions['duplicate_attributes']) or '无'}。",
-                    f"- 建议：{session['suggested_action']}",
+                    f"- Target: `{session['target']}` · {_cell(target['title'], 180)}",
+                    f"- Category: {_cell(target['category'], 180)}",
+                    f"- Question Sequence: {', '.join(questions['asked_attributes']) or 'None'}; Duplicate Questions: {', '.join(questions['duplicate_attributes']) or 'None'}.",
+                    f"- Suggestion: {session['suggested_action']}",
                     "",
-                    "| 轮次 | Override 已生效 | 用户消息 | Agent 提问 | ask_attribute | BM25 | Dense | RRF | 融合 | 最终 | 返回 Top 10 |",
+                    "| Turn | Override Applied | User Message | Agent Question | ask_attribute | BM25 | Dense | RRF | Fused | Final | Top 10 Returned |",
                     "|---:|---|---|---|---|---:|---:|---:|---:|---:|---|",
                 ]
             )
             for turn in session["turns"]:
                 ranks = turn["ranks"]
                 lines.append(
-                    f"| {turn['turn']} | {'是' if turn['override_applied'] else '否'} | "
+                    f"| {turn['turn']} | {'Yes' if turn['override_applied'] else 'No'} | "
                     f"{_cell(turn['user_message'])} | {_cell(turn['agent_message'])} | "
                     f"{_display(turn['ask_attribute'])} | {_display(ranks['bm25'])} | "
                     f"{_display(ranks['dense'])} | {_display(ranks['sparse_fused'])} | "
@@ -438,9 +438,9 @@ def _markdown(report: dict) -> str:
             lines.append("")
     lines.extend(
         [
-            "## 7. 使用说明",
+            "## 7. Usage Instructions",
             "",
-            "本 Markdown 用于人工复盘；同名 JSON 保存完整查询、状态、约束、路由、问题、Token、LLM 状态、目标摘要和逐轮 rank。任何后续修改只能采用跨样本通用规则，并先在同一冻结 dev 上配对验证。",
+            "This Markdown is for manual review; the same-named JSON saves complete queries, states, constraints, routes, questions, tokens, LLM states, target summaries, and per-turn ranks. Any subsequent modifications must use cross-sample general rules and be validated first on the same frozen dev set.",
             "",
         ]
     )

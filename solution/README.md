@@ -83,7 +83,7 @@ python -c "from solution.agent import Agent; from solution.config import Solutio
 
 The adapter sends only the current candidate set, requests a complete JSON-schema-constrained permutation, disables thinking, and uses temperature 0. Connection errors, timeouts, malformed JSON, duplicate IDs, missing IDs, or invented IDs fall back to deterministic ranking. It records error counts, success/fallback rates, token totals, and mean/P50/P95 latency. Two consecutive failures open a session-local circuit breaker. Configure the endpoint, timeout, keep-alive, context window, and output budget through the `semantic_ranker_*` fields in `SolutionConfig`.
 
-The current dev150 ablation improved MRR but did not improve HR, slightly worsened MTTC, had a 12.36% fallback rate, and took about 24.48 times as long as the deterministic Context Programming agent. Therefore Qwen remains an explicitly enabled experimental capability, not the default production path. See `docs/QWEN35_CONTEXT_DEV_ABLATION_ZH.md` and `docs/DYNAMIC_CONTEXT_PROGRAMMING_ZH.md`.
+The current dev150 ablation improved MRR but did not improve HR, slightly worsened MTTC, had a 12.36% fallback rate, and took about 24.48 times as long as the deterministic Context Programming agent. Therefore Qwen remains an explicitly enabled experimental capability, not the default production path. See `docs/QWEN35_CONTEXT_DEV_ABLATION.md` and `docs/DYNAMIC_CONTEXT_PROGRAMMING.md`.
 
 ## Review invariants
 

@@ -148,7 +148,7 @@
         "store": "Funny Saying Novelty Gift ideas"
       },
       "failure_reason": "not_recalled",
-      "suggested_action": "优先改进通用查询表达、类目/元数据覆盖和 Dense 候选补充；禁止针对 sample_id 或目标 ASIN 写规则。",
+      "suggested_action": "Prioritize improving general query formulation, category/metadata coverage, and Dense candidate supplementation; never write rules for a sample_id or target ASIN.",
       "all_turn_best_ranks": {
         "bm25": null,
         "category": null,
@@ -1755,7 +1755,7 @@
         "store": "ARIAT"
       },
       "failure_reason": "not_recalled",
-      "suggested_action": "优先改进通用查询表达、类目/元数据覆盖和 Dense 候选补充；禁止针对 sample_id 或目标 ASIN 写规则。",
+      "suggested_action": "Prioritize improving general query formulation, category/metadata coverage, and Dense candidate supplementation; never write rules for a sample_id or target ASIN.",
       "all_turn_best_ranks": {
         "bm25": null,
         "category": null,
@@ -3127,7 +3127,7 @@
         "store": "NY Threads"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 80,
         "category": 70,
@@ -4581,7 +4581,7 @@
         "store": "Buffway"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 95,
         "category": null,
@@ -5986,7 +5986,7 @@
         "store": "FAYALEQ"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 28,
         "category": null,
@@ -7418,7 +7418,7 @@
         "store": "Under Armour"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 20,
         "category": 43,
@@ -8778,7 +8778,7 @@
         "store": "Amazon Essentials"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 80,
         "category": 110,
@@ -10068,7 +10068,7 @@
         "store": "Goodthreads"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 54,
         "category": null,
@@ -11358,7 +11358,7 @@
         "store": "IZOD"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 29,
         "category": null,
@@ -12666,7 +12666,7 @@
         "store": "URBAN REPUBLIC"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 98,
         "category": 79,
@@ -13973,7 +13973,7 @@
         "store": "lola mae"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 117,
         "category": null,
@@ -15268,7 +15268,7 @@
         "store": "DUOYANGJIASHA"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": 1,
         "category": null,
@@ -16518,7 +16518,7 @@
         "store": "Eastland"
       },
       "failure_reason": "final_rank_over_10",
-      "suggested_action": "目标已进入最终候选，优先审查通用 reranker 特征、语义排序和近邻竞争项，不扩大无证据候选池。",
+      "suggested_action": "The target reached the final candidate set. Prioritize general reranker features, semantic ranking, and competing neighbors without expanding the candidate pool without evidence.",
       "all_turn_best_ranks": {
         "bm25": null,
         "category": 6,

@@ -1,10 +1,10 @@
-# 失败会话逐轮路由审计
+# Failed Session Round-by-Round Routing Audit
 
-- 失败会话：24
-- override miss：7
-- 原因分布：constraint_filter_drop=1, final_rank_over_10=20, not_recalled=3
+- Failed sessions: 24
+- override miss: 7
+- Cause distribution: constraint_filter_drop=1, final_rank_over_10=20, not_recalled=3
 
-| sample_id | scenario | 原因 | 最佳 BM25 | 最佳 Dense | 最佳 Fused | 最佳 Final |
+| sample_id | scenario | Cause | Best BM25 | Best Dense | Best Fused | Best Final |
 |---|---|---|---:|---:|---:|---:|
 | public_0002 | intent_override | final_rank_over_10 | 65 | - | 80 | 26 |
 | public_0003 | intent_override | final_rank_over_10 | - | 90 | 212 | 117 |
@@ -31,4 +31,4 @@
 | public_0187 | boundary | final_rank_over_10 | - | 25 | 76 | 35 |
 | public_0195 | browsing | final_rank_over_10 | 5 | - | 29 | 14 |
 
-> `final` 为完整重排列表的位置；官方命中只接受前 10。完整逐轮查询、约束、提问和各路由 rank 见同目录 JSON。
+> `final` denotes the position in the complete reranking list; official hits are accepted only within the top 10. Full round-by-round queries, constraints, prompts, and all routing ranks are available in the JSON files in the same directory.

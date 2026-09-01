@@ -195,8 +195,8 @@ Terminal-only fallback:
 .\.venv\Scripts\python.exe demo\cli_demo.py
 ```
 
-See [`demo/README_ZH.md`](demo/README_ZH.md) and
-[`docs/DEMO_RUNBOOK_ZH.md`](docs/DEMO_RUNBOOK_ZH.md) for the exact presentation
+See [`demo/README.md`](demo/README.md) and
+[`docs/DEMO_RUNBOOK.md`](docs/DEMO_RUNBOOK.md) for the exact presentation
 script.
 
 ## Optional local Qwen3.5
@@ -289,6 +289,6 @@ used only as frozen competition input; this repository does not redistribute the
 ## Submission documents
 
 - [`docs/DEVPOST_DESCRIPTION.md`](docs/DEVPOST_DESCRIPTION.md) — ready-to-paste Devpost copy
-- [`docs/DEMO_RUNBOOK_ZH.md`](docs/DEMO_RUNBOOK_ZH.md) — local and video demo flow
-- [`docs/COMPETITION_REQUIREMENTS_STATUS_ZH.md`](docs/COMPETITION_REQUIREMENTS_STATUS_ZH.md) — requirement audit
-- [`docs/QWEN35_CONTEXT_DEV_ABLATION_ZH.md`](docs/QWEN35_CONTEXT_DEV_ABLATION_ZH.md) — measured Qwen decision
+- [`docs/DEMO_RUNBOOK.md`](docs/DEMO_RUNBOOK.md) — local and video demo flow
+- [`docs/COMPETITION_REQUIREMENTS_STATUS.md`](docs/COMPETITION_REQUIREMENTS_STATUS.md) — requirement audit
+- [`docs/QWEN35_CONTEXT_DEV_ABLATION.md`](docs/QWEN35_CONTEXT_DEV_ABLATION.md) — measured Qwen decision
