@@ -185,7 +185,7 @@ repository-native HTML/CSS/JavaScript frontend:
 .\.venv\Scripts\python.exe demo\app.py
 ```
 
-Open <http://127.0.0.1:7860> and wait for **系统就绪**. The page shows the
+Open <http://127.0.0.1:7860> and wait for **System Ready**. The page shows the
 multi-turn conversation, Top-10 catalog products, retrieval routes, distilled
 context, Context Program, constraints, cutoff decision, and fallback status.
 
