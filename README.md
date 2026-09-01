@@ -269,13 +269,15 @@ Programs, Qwen validation/fallback, and local presentation helpers.
 - Repository-native HTML/CSS/JavaScript and Python's standard-library HTTP server
   for the presentation-only local UI
 
-## Team contribution
+## Team contributions
 
-This submission is currently documented as a **solo project**: architecture,
-retrieval, dialogue state, context programming, experiments, testing,
-documentation, and demo integration were completed by the repository owner. If
-the final Devpost team has additional members, replace this paragraph with the
-exact member names and contributions before submission.
+The team members are **LIU BOANG**, **JI CHENGYU**, and **LI XIZI**. All three
+members contributed equally across every part of the project, including problem
+framing, system architecture, retrieval and ranking, multi-turn dialogue state,
+dynamic context programming, BGE and Qwen integration, evaluation and failure
+analysis, testing, documentation, the local demo, and submission preparation.
+The work was developed collaboratively rather than divided into exclusive
+individual components.
 
 ## Data and attribution
 

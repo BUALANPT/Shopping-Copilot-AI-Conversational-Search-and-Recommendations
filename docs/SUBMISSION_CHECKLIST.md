@@ -21,7 +21,7 @@
 
 - [ ] Replace GitHub links in `docs/DEVPOST_DESCRIPTION.md`;
 - [ ] Replace with YouTube Public video links;
-- [ ] Ensure team members and contributions reflect reality;
+- [x] Team members and equal contributions are documented for LIU BOANG, JI CHENGYU, and LI XIZI;
 - [ ] List Python, SQLite FTS5, NumPy, FastEmbed, Ollama/Qwen, and the local web frontend;
 - [ ] Explain the measured reason for Qwen being disabled by default;
 - [ ] Clearly label metrics as dev150 without claiming parity on a private set;

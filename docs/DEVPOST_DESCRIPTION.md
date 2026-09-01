@@ -1,7 +1,6 @@
 # ContextCart — Devpost Submission Copy
 
-> Replace the two bracketed links and confirm the team-contribution sentence
-> before pasting this page into Devpost.
+> Replace the two bracketed links before pasting this page into Devpost.
 
 - **Public GitHub:** `[ADD FINAL PUBLIC GITHUB URL]`
 - **Public YouTube demo:** `[ADD FINAL YOUTUBE URL]`
@@ -170,8 +169,10 @@ model weights, API keys, or credentials.
 
 ## Team contributions
 
-This submission is currently documented as a solo project. The repository owner
-implemented the architecture, retrieval and ranking pipeline, dialogue state,
-context programming, experiments, tests, documentation, and demo integration.
-If the final Devpost team contains additional members, replace this paragraph
-with exact names and contribution boundaries before submission.
+The team members are **LIU BOANG**, **JI CHENGYU**, and **LI XIZI**. All three
+members contributed equally across every part of the project: problem framing,
+system architecture, retrieval and ranking, multi-turn dialogue state, dynamic
+context programming, BGE and Qwen integration, evaluation and failure analysis,
+testing, documentation, the local demo, and submission preparation. The work
+was developed collaboratively rather than divided into exclusive individual
+components.
