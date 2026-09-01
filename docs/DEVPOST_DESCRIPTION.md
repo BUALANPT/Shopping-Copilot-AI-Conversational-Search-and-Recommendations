@@ -2,7 +2,7 @@
 
 > Replace the two bracketed links before pasting this page into Devpost.
 
-- **Public GitHub:** `[ADD FINAL PUBLIC GITHUB URL]`
+- **Public GitHub:** `https://github.com/BUALANPT/Shopping-Copilot-AI-Conversational-Search-and-Recommendations`
 - **Public YouTube demo:** `[ADD FINAL YOUTUBE URL]`
 
 ## Tagline
